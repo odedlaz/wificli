@@ -41,7 +41,8 @@ complete -c wificli -l ls \
    --description "List available WiFi access points"
 
 # -k (keep order) is ignored in fish < 3.0
-complete -k -x -c wificli -l connect -a "(__wificli_list_devices)"
+complete -k -x -c wificli -l connect -a "(__wificli_list_devices)" \
+  --description "Connect to a WiFi access point specified by (B)SSID"
 
 complete -c wificli -l toggle \
    --description "Toggle WiFi radio switch"
