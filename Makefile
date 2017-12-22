@@ -4,19 +4,19 @@ ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
 
 dev: uninstall
-	ln -s $(ROOT_DIR)/wlancli.fish $(BIN_DIR)/wlancli
-	ln -s $(ROOT_DIR)/completions.fish $(COMPLETEION_DIR)/wlancli.fish
+	ln -s $(ROOT_DIR)/wificli.fish $(BIN_DIR)/wificli
+	ln -s $(ROOT_DIR)/completions.fish $(COMPLETEION_DIR)/wificli.fish
 
 install:
-	cp -f ./wlancli.fish $(BIN_DIR)/wlancli
-	chown root $(BIN_DIR)/wlancli
-	chmod 755 $(BIN_DIR)/wlancli
+	cp -f ./wificli.fish $(BIN_DIR)/wificli
+	chown root $(BIN_DIR)/wificli
+	chmod 755 $(BIN_DIR)/wificli
 
-	cp -f ./completions.fish $(COMPLETEION_DIR)/wlancli.fish
-	chown root $(COMPLETEION_DIR)/wlancli.fish
+	cp -f ./completions.fish $(COMPLETEION_DIR)/wificli.fish
+	chown root $(COMPLETEION_DIR)/wificli.fish
 
 uninstall:
-	rm -f $(BIN_DIR)/wlancli
-	rm -f $(COMPLETEION_DIR)/wlancli.fish
+	rm -f $(BIN_DIR)/wificli
+	rm -f $(COMPLETEION_DIR)/wificli.fish
 
 .PHONY: install uninstall

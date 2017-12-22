@@ -1,6 +1,6 @@
-# Completions for wlancli
+# Completions for wificli
 
-function __wlancli_list_devices
+function __wificli_list_devices
    nmcli device wifi rescan ^ /dev/null
    # 1. get all access points
    # 2. remove header
@@ -16,28 +16,32 @@ function __wlancli_list_devices
             sed 's/ *$//' | \
             sort -nrk1 | \
             awk ' {
+               # extract ssid and replace spaces with underscores
                ssid=substr($0, index($0, $3))
+               gsub(/ /,"_",ssid)
+
                signal=$1
                bars=$2
+
                printf("%s\t%s %02d\n", ssid, bars, signal)
             }'
 end
 
 # default to list devices
 # -k (keep order) is ignored in fish < 3.0
-complete -k -x -c wlancli -a "(__wlancli_list_devices)"
+complete -k -x -c wificli -a "(__wificli_list_devices)"
 
-complete -c wlancli -l help \
+complete -c wificli -l help \
    --description "Display help and exit"
 
-complete -c wlancli -l rescan \
+complete -c wificli -l rescan \
    --description "Rescan for available WiFi access points"
 
-complete -c wlancli -l ls \
+complete -c wificli -l ls \
    --description "List available WiFi access points"
 
 # -k (keep order) is ignored in fish < 3.0
-complete -k -x -c wlancli -l connect -a "(__wlancli_list_devices)"
+complete -k -x -c wificli -l connect -a "(__wificli_list_devices)"
 
-complete -c wlancli  -l toggle \
+complete -c wificli -l toggle \
    --description "Toggle WiFi radio switch"

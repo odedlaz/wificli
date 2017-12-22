@@ -82,7 +82,7 @@ function connect_to -a ssid
    end
 
    # connect to the given ssid (and create new network-manager connection)
-   read -i -P 'Password: ' passwd
+   read -i -P '[wificli] password for $ssid: ' passwd
    nmcli device wifi connect $ssid password $passwd
    return $status
 end
