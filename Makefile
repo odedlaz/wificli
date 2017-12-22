@@ -4,19 +4,19 @@ ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
 
 dev: uninstall
-	ln -s $(ROOT_DIR)/wlancli $(BIN_DIR)/wlancli
-	ln -s $(ROOT_DIR)/completions $(COMPLETEION_DIR)/wlancli.fish
+	ln -s $(ROOT_DIR)/wlancli.fish $(BIN_DIR)/wlancli
+	ln -s $(ROOT_DIR)/completions.fish $(COMPLETEION_DIR)/wlancli.fish
 
 install:
-	cp -f ./wlancli $(BIN_DIR)/wlancli
+	cp -f ./wlancli.fish $(BIN_DIR)/wlancli
 	chown root $(BIN_DIR)/wlancli
 	chmod 755 $(BIN_DIR)/wlancli
 
-	cp -f ./completions $(COMPLETEION_DIR)/wlancli.fish
+	cp -f ./completions.fish $(COMPLETEION_DIR)/wlancli.fish
 	chown root $(COMPLETEION_DIR)/wlancli.fish
 
 uninstall:
-	rm $(BIN_DIR)/wlancli
-	rm $(COMPLETEION_DIR)/wlancli.fish
+	rm -f $(BIN_DIR)/wlancli
+	rm -f $(COMPLETEION_DIR)/wlancli.fish
 
 .PHONY: install uninstall
