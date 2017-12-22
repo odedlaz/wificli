@@ -1,9 +1,24 @@
 #!/usr/bin/env fish
-set -l options (fish_opt --short h --long help)
-set options $options (fish_opt --short c --long connect --required-val)
-set options $options (fish_opt --short l --long ls)
-set options $options (fish_opt --short r --long rescan)
-set options $options (fish_opt --short t --long toggle)
+set -l options (fish_opt --short h \
+                         --long help \
+                         --long-only)
+
+set options $options (fish_opt --short c \
+                               --long connect \
+                               --long-only \
+                               --required-val)
+
+set options $options (fish_opt --short l \
+                               --long ls \
+                               --long-only)
+
+set options $options (fish_opt --short r \
+                               --long rescan \
+                               --long-only)
+
+set options $options (fish_opt --short t \
+                               --long toggle \
+                               --long-only)
 
 argparse $options -- $argv ;or exit 1
 
